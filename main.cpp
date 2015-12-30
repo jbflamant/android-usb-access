@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
 
     QGuiApplication app(argc, argv);
 
-    HardwareUtilsAndroid::Instance()->writeOnUSB("newFile");
+    HardwareUtilsAndroid::Instance()->readDomFiles();
 
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));

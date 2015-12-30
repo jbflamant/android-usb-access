@@ -1,7 +1,7 @@
 TEMPLATE = app
 TARGET = AndroidUSBAccess
 
-QT += qml quick network
+QT += qml quick network core xml
 CONFIG += c++11
 
 SOURCES += main.cpp

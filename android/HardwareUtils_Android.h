@@ -6,6 +6,8 @@
 #include <QtAndroidExtras/QAndroidJniObject>
 #include <QtAndroidExtras/QAndroidJniEnvironment>
 #include <QFile>
+#include <QDirIterator>
+#include <QDomDocument>
 
 class HardwareUtilsAndroid: public QObject, public QAndroidActivityResultReceiver
 {
@@ -17,10 +19,13 @@ public:
     static HardwareUtilsAndroid* Instance(QObject *parent = 0);
 
     virtual void handleActivityResult(int receiverRequestCode, int resultCode, const QAndroidJniObject & data);
-    virtual bool writeOnUSB(QString filename);
+    virtual bool writeDomFiles(QList<QDomDocument> *domDocumentList, QList<QString> *stringList);
+    virtual bool readDomFiles(void);
 
 private:
-    QFile m_file;
+    QString m_fileName;
+    QList<QDomDocument> *m_domDocumentList;
+    QList<QString> *m_stringList;
 };
 
 #endif // HARDWAREUTILS_ANDROID_H
